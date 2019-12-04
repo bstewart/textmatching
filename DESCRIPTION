@@ -1,0 +1,17 @@
+Package: textmatching
+Type: Package
+Title: Functions for Matching with Text-based Confounding
+Version: 0.1.0
+Authors@R: as.person(c(
+    "Richard Nielsen <rnielsen@mit.edu> [aut]",
+    "Margaret Roberts <meroberts@ucsd.edu> [aut]", 
+    "Brandon Stewart <bms4@princeton.edu> [aut, cre]"
+  ))
+Description: We do some things and stuff
+License: MIT
+Depends: 
+  R (>= 3.2.2), 
+  methods
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
