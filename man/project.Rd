@@ -2,27 +2,68 @@
 % Please edit documentation in R/project.R
 \name{project}
 \alias{project}
-\title{Create a projection for matching}
+\title{Create a projection for text matching}
 \usage{
-project(mod, docs, interactions = FALSE, int.type = c("refit", "phi",
-  "theta"))
+project(
+  stm_model,
+  documents,
+  interactions = TRUE,
+  type = c("theta", "phi", "refit"),
+  verbose = TRUE
+)
 }
 \arguments{
-\item{mod}{test}
+\item{stm_model}{the stm content covariate model from which to develop the projection}
 
-\item{docs}{test}
+\item{documents}{the documents that we want the projection for.  Note that 
+these must be aligned with the vocabulary.  If they were not the original documents
+used to fit the model, see \link[stm]{alignCorpus}.}
 
-\item{interactions}{test}
+\item{interactions}{a logical which defaults to TRUE. Determines whether or not the topic-aspect
+interactions are included.}
 
-\item{int.type}{test}
+\item{type}{determines how the topic-covariate interactions are included (see details below). 
+If interactions=FALSE this has no effect.}
+
+\item{verbose}{a logical indicating if progress should be printed to the screen}
 }
 \value{
 list
 
-\item{mu}{example}
+\item{projection}{the projection of word count information on the document} 
+\item{diagnostic}{the sum of interaction projections for each word type 
+normalized by the total number of words.  This is helpful for assessing which
+elements of the vocabularly are contributing to the topic-specific elements of
+the projection.  For non-topic specific parts, the relative contributions can 
+be read directly off the kappa object in stm.}
 }
 \description{
-Text about that.
+Brief Description
+}
+\details{
+The function returns one loading per document, per level of the factor.
+Thus in the standard case of two levels (treatment/control) the projection
+is actually two-dimensional (indicating words that are particularly indicative
+of treatment and words particularly indicative of control).
+
+When \code{interactions=FALSE} only the content covariate parameters
+are used (and not the topic-covariate interactions).  This may often
+be a decent approximation to the full calculation because the topic-covariate
+interactions are typically very sparse.
+
+When \code{interactions=TRUE} information from the interaction of the topic
+and the content covariate is included in the projections.  The software offers
+three ways to do this based on the options set for \code{type}. In each case
+the difference is how we reweight the topic-specific components of the interaction.
+
+When \code{type="theta"} (the option used in the paper), we simply use the theta
+values estimated under the model.  When \code{type="phi"}, we recompute the token-level
+topic loadings conditional on the document-topics theta.  This allows individual words
+to have their own topic-specific loadings.  When \code{type="refit"}, we recompute
+the token-level topic loadings but under each different level of the content covariate.
+The option is called \code{"refit"} because it is essentially refitting the tokens under
+each different potential level of the content covariate when calculating the projection to
+that level.
 }
 \examples{
 \dontrun{
@@ -30,8 +71,7 @@ example
 }
 }
 \references{
-Roberts, M., Stewart, B., Tingley, D., and Airoldi, E. (2013)
-"The structural topic model and applied social science." In Advances in
-Neural Information Processing Systems Workshop on Topic Models: Computation,
-Application, and Evaluation. http://goo.gl/uHkXAQ
+Roberts, M., Stewart, B., Nielsen, R. (2020)
+"Adjusting for Confounding with Text Matching." 
+In American Journal of Political Science
 }

@@ -7,11 +7,12 @@ Authors@R: as.person(c(
     "Margaret Roberts <meroberts@ucsd.edu> [aut]", 
     "Brandon Stewart <bms4@princeton.edu> [aut, cre]"
   ))
-Description: We do some things and stuff
+Description: This package includes functions to adjust for text-based confounding using matching.  Methods developed in Roberts et al (2020) <https://doi.org/10.1111/ajps.12526>.
 License: MIT
 Depends: 
   R (>= 3.2.2), 
   methods
+Imports: stm, Matrix, matrixStats
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.0
