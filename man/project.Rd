@@ -38,7 +38,8 @@ the projection.  For non-topic specific parts, the relative contributions can
 be read directly off the kappa object in stm.}
 }
 \description{
-Brief Description
+Calculates the linear information in the word counts apart from the topics
+about the treatment.
 }
 \details{
 The function returns one loading per document, per level of the factor.
@@ -67,7 +68,8 @@ that level.
 }
 \examples{
 \dontrun{
-example
+data(sim)
+projection <- project(sim_topics,sim_documents)
 }
 }
 \references{

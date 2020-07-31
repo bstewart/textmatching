@@ -34,7 +34,8 @@ and the global parameters are updated last, they could be different.
 }
 \examples{
 \dontrun{
-example
+ data(sim)
+ refitted <- refit(sim_topics, sim_documents, content_level="1")
 }
 }
 \references{

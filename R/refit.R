@@ -23,7 +23,8 @@
 #' In American Journal of Political Science
 #' @examples
 #' \dontrun{
-#' example
+#'  data(sim)
+#'  refitted <- refit(sim_topics, sim_documents, content_level="1")
 #' }
 #' @export
 refit <- function(stm_model, 
@@ -35,7 +36,7 @@ refit <- function(stm_model,
   if(!inherits(content_level,"character")) stop("treatment_level argument must be a character.")
   treatment_level <- match.arg(content_level, choices=stm_model$settings$covariates$yvarlevels)
   bnum <- match(treatment_level, stm_model$settings$covariates$yvarlevels)
-  beta.index <- rep(bnum,length(stm_model$settings$covariates$betaindex))
+  beta.index <- rep(bnum,length(documents))
   
   #extract everything to refit under
   beta <- lapply(stm_model$beta$logbeta, exp)
@@ -78,11 +79,11 @@ refit <- function(stm_model,
                                          sigmainv=siginv, beta= beta[[aspect]],
                                          sigma=sigma, sigmaentropy=sigmaentropy,
                                          posterior=FALSE)
-    lambda[[i]] <- doc.results
+    lambda[[i]] <- doc.results$lambda
     if(verbose && i%%ctevery==0) cat(".")
   }
   if(verbose) cat("\n") #add a line break for the next message.
-  
+
   #4) Combine and Return Sufficient Statistics
   lambda <- do.call(rbind, lambda)
   lambda <- cbind(lambda,0)

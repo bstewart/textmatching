@@ -1,6 +1,7 @@
 #' Create a projection for text matching
 #'
-#' Brief Description
+#' Calculates the linear information in the word counts apart from the topics
+#' about the treatment.
 #' 
 #' The function returns one loading per document, per level of the factor.
 #' Thus in the standard case of two levels (treatment/control) the projection
@@ -49,7 +50,8 @@
 #' In American Journal of Political Science
 #' @examples
 #' \dontrun{
-#' example
+#' data(sim)
+#' projection <- project(sim_topics,sim_documents)
 #' }
 #' @export
 project <- function(stm_model, documents, 
@@ -61,6 +63,14 @@ project <- function(stm_model, documents,
   int.type <- match.arg(type)
   if(!inherits(stm_model, "STM")) stop("stm_model is not an stm object")
   if(length(stm_model$beta$logbeta)<2) stop("stm_model does not have a content covariate.")
+  
+  #deal with older versions of stm by automatically coding contrast
+  if(is.null(stm_model$settings$kappa$contrast)) stm_model$settings$kappa$contrast <- FALSE
+  #if we have the contrast coding we are effectively working with one less element
+  contrast <- stm_model$settings$kappa$contrast
+  if(contrast) { 
+    index <- index[-length(index)]  
+  }
   if(interactions & contrast) {
     if(int.type%in% c("refit", "phi")) stop("Only type='theta' works with contrast")
   }
@@ -73,13 +83,7 @@ project <- function(stm_model, documents,
   A <- stm_model$setting$dim$A
   index <- sort(unique(stm_model$settings$covariates$betaindex))
   
-  #deal with older versions of stm by automatically coding contrast
-  if(is.null(stm_model$settings$kappa$contrast)) stm_model$settings$kappa$contrast <- FALSE
-  #if we have the contrast coding we are effectively working with one less element
-  contrast <- stm_model$settings$kappa$contrast
-  if(contrast) { 
-    index <- index[-length(index)]  
-  }
+
   
   #Compute the projection for the non-interactive elements
       # in Equation 5 of the paper this is \sum_l w_{i,l}\kappa_{t,c}^{cov}

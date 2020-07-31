@@ -11,7 +11,8 @@
 #' In American Journal of Political Science
 #' @examples
 #' \dontrun{
-#' example
+#' data(sim)
+#' content_levels(sim_topics)
 #' }
 #' @export
 content_levels <- function(stm_model) {

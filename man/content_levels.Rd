@@ -18,7 +18,8 @@ if the model is not a content covariate model.
 }
 \examples{
 \dontrun{
-example
+data(sim)
+content_levels(sim_topics)
 }
 }
 \references{
