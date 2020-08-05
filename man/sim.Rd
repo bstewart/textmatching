@@ -61,7 +61,10 @@ refitted <- refit(sim_topics, sim_documents, content_level="1")
 content_levels(sim_topics)
 
 #Step 3 is to calculate the projection onto the treatment variable
-projection <- project(sim_topics, sim_documents)
+projection <- project(sim_topics, sim_documents, interactions = FALSE)
+#NB: here we have turned off interactions purely for speed during
+#CRAN checks.  Consider including them if you believe topic-specific
+#word choice is relevant.  See description above.
 
 #Finally Step 4 is to match using CEM or other matching method of your
 #choice

@@ -1,13 +1,13 @@
 Package: textmatching
 Type: Package
-Title: Functions for Matching with Text-based Confounding
+Title: Functions for Matching with Text-Based Confounding
 Version: 0.1.0
-Authors@R: as.person(c(
-    "Richard Nielsen <rnielsen@mit.edu> [aut]",
-    "Margaret Roberts <meroberts@ucsd.edu> [aut]", 
-    "Brandon Stewart <bms4@princeton.edu> [aut, cre]"
-  ))
-Description: This package includes functions to adjust for text-based confounding using matching.  Methods developed in Roberts et al (2020) <https://doi.org/10.1111/ajps.12526>.
+Authors@R: c(
+    person("Richard", "Nielsen", email = "rnielsen@mit.edu", role="aut"),
+    person("Brandon", "Stewart", email = "bms4@princeton.edu", role = c("cre","aut")), 
+    person("Margaret", "Roberts", email = "meroberts@ucsd.edu", role = "aut")
+  )
+Description: Text matching is an approach to adjustment in causal effect estimation when a document provides a proxy for unobserved confounding. The package includes functions to implement the approach to text matching developed in Roberts, Stewart and Nielsen (2020) <doi:10.1111/ajps.12526>.
 License: GPL-3
 Depends: 
   R (>= 3.5.0)
