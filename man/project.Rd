@@ -67,7 +67,7 @@ each different potential level of the content covariate when calculating the pro
 that level.
 }
 \examples{
-\dontrun{
+\donttest{
 data(sim)
 projection <- project(sim_topics,sim_documents)
 }

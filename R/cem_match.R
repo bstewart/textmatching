@@ -21,7 +21,7 @@
 #' @param ... additional arguments passed to \link[cem]{cem}
 #' @return a \code{cem.match} object
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' #See ?sim for a walkthrough
 #' data(sim)
 #' refitted <- refit(sim_topics, sim_documents, content_level="1")

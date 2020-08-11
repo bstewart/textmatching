@@ -10,7 +10,7 @@
 #' "Adjusting for Confounding with Text Matching." 
 #' In American Journal of Political Science
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' data(sim)
 #' content_levels(sim_topics)
 #' }

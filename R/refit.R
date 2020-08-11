@@ -22,7 +22,7 @@
 #' "Adjusting for Confounding with Text Matching." 
 #' In American Journal of Political Science
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'  data(sim)
 #'  refitted <- refit(sim_topics, sim_documents, content_level="1")
 #' }

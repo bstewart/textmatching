@@ -33,7 +33,7 @@ learned value of theta if the model had converged.  However, because \pkg{stm} i
 and the global parameters are updated last, they could be different.
 }
 \examples{
-\dontrun{
+\donttest{
  data(sim)
  refitted <- refit(sim_topics, sim_documents, content_level="1")
 }

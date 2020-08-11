@@ -49,7 +49,7 @@
 #' "Adjusting for Confounding with Text Matching." 
 #' In American Journal of Political Science
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' data(sim)
 #' projection <- project(sim_topics,sim_documents)
 #' }

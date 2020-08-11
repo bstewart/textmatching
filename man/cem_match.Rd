@@ -47,7 +47,7 @@ A wrapper around CEM to match on refit topics and projection.
 This function is a convenience wrapper around CEM which returns a \pkg{cem} object.
 }
 \examples{
-\dontrun{
+\donttest{
 #See ?sim for a walkthrough
 data(sim)
 refitted <- refit(sim_topics, sim_documents, content_level="1")

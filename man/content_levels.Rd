@@ -17,7 +17,7 @@ A helper function which returns the levels of the content covariate in an stm mo
 if the model is not a content covariate model.
 }
 \examples{
-\dontrun{
+\donttest{
 data(sim)
 content_levels(sim_topics)
 }
